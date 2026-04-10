@@ -6,7 +6,8 @@ export default async function handler(req, res) {
   }
 
   try {
-    const response = await fetch(`${APPS_SCRIPT_URL}?action=update`, {
+    const action = req.query.action || "update";
+    const response = await fetch(`${APPS_SCRIPT_URL}?action=${action}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(req.body),
