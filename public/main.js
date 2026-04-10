@@ -29,7 +29,11 @@ function parseCustomDate(dateStr) {
 
 function generateEmailFromScript() {
   document.getElementById("output").textContent = "Generating...";
-  fetch(generateURL + "?t=" + Date.now())
+  fetch(generateURL, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({})
+  })
     .then(res => res.json())
     .then(data => {
       if (!data.success) {
