@@ -6,12 +6,7 @@ export default async function handler(req, res) {
   }
 
   try {
-    const response = await fetch(`${APPS_SCRIPT_URL}?action=generate`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(req.body),
-    });
-
+    const response = await fetch(`${APPS_SCRIPT_URL}?action=generate`);
     const data = await response.json();
     return res.status(200).json(data);
   } catch (err) {
