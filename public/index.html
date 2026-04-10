@@ -7,17 +7,33 @@
   <style>
     body { font-family: Arial, sans-serif; background: #111; color: #FFD700; padding: 20px; }
     h1 { text-align: center; }
-    button { background: #FFD700; color: #111; border: none; padding: 10px 20px; font-size: 16px; cursor: pointer; border-radius: 8px; margin: 10px; }
-    #output { margin: 10px 0; font-weight: bold; }
-    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+    .top-bar { display: flex; gap: 10px; align-items: center; margin-bottom: 15px; flex-wrap: wrap; }
+    button { background: #FFD700; color: #111; border: none; padding: 10px 20px; font-size: 16px; cursor: pointer; border-radius: 8px; margin: 5px 0; }
+    button:hover { background: #e6c200; }
+    button.danger { background: #e63946; color: white; }
+    button.danger:hover { background: #c1121f; }
+    button.copy-btn { background: #333; color: #FFD700; border: 1px solid #FFD700; padding: 4px 10px; font-size: 12px; border-radius: 4px; margin: 0; }
+    #searchBox { background: #222; color: #FFD700; border: 1px solid #FFD700; padding: 8px; width: 250px; border-radius: 8px; font-size: 14px; }
+    #counter { color: #FFD700; font-size: 14px; opacity: 0.7; }
+    #output { margin: 5px 0; font-weight: bold; min-height: 20px; }
+    table { width: 100%; border-collapse: collapse; margin-top: 10px; }
     th, td { border: 1px solid #FFD700; padding: 8px; text-align: left; font-size: 13px; }
     th { background: #222; }
     input[type=text] { background: #222; color: #FFD700; border: 1px solid #FFD700; padding: 4px; width: 100%; }
+    select { background: #222; color: #FFD700; border: 1px solid #FFD700; padding: 4px; width: 100%; }
+    .status-available { color: #4caf50; font-weight: bold; }
+    .status-sold { color: #e63946; font-weight: bold; }
+    .status-flagged { color: #ff9800; font-weight: bold; }
   </style>
 </head>
 <body>
   <h1>⚡ Oneestore Gmail Generator</h1>
-  <button id="generateBtn">Generate Gmail</button>
+  <div class="top-bar">
+    <button id="generateBtn">Generate Gmail</button>
+    <input type="text" id="searchBox" placeholder="🔍 Cari email / player / seller..." oninput="filterTable()"/>
+    <span id="counter"></span>
+    <button onclick="loadEmailList()" style="padding:8px 14px;font-size:13px;">🔄 Refresh</button>
+  </div>
   <div id="output"></div>
   <table id="gmailTable">
     <thead>
@@ -28,6 +44,7 @@
         <th>Player List</th>
         <th>Harga (RM)</th>
         <th>Seller</th>
+        <th>Status</th>
         <th>Action</th>
       </tr>
     </thead>
