@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Oneestore Gmail Generator</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #111; color: #FFD700; padding: 20px; }
+    h1 { text-align: center; }
+    button { background: #FFD700; color: #111; border: none; padding: 10px 20px; font-size: 16px; cursor: pointer; border-radius: 8px; margin: 10px; }
+    #output { margin: 10px 0; font-weight: bold; }
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+    th, td { border: 1px solid #FFD700; padding: 8px; text-align: left; font-size: 13px; }
+    th { background: #222; }
+    input[type=text] { background: #222; color: #FFD700; border: 1px solid #FFD700; padding: 4px; width: 100%; }
+  </style>
+</head>
+<body>
+  <h1>⚡ Oneestore Gmail Generator</h1>
+  <button id="generateBtn">Generate Gmail</button>
+  <div id="output"></div>
+  <table id="gmailTable">
+    <thead>
+      <tr>
+        <th>Email</th>
+        <th>Password</th>
+        <th>Tarikh</th>
+        <th>Player List</th>
+        <th>Harga (RM)</th>
+        <th>Seller</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+  <script src="main.js"></script>
+</body>
+</html>

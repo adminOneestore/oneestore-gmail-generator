@@ -1,0 +1,25 @@
+export default async function handler(req, res) {
+  try {
+    const scriptURL = "https://script.google.com/macros/s/AKfycbzg8wX_bZ7yAwrzAdgxB2md2nUrAll41XZLsMy6lOqW3OK301FoGH0BcNboDQRFNTTJ/exec?action=update&t=" + Date.now();
+
+    const response = await fetch(scriptURL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(req.body)
+    });
+
+    const text = await response.text();
+
+    res.setHeader("Cache-Control", "no-store, no-cache, must-revalidate, proxy-revalidate");
+    res.setHeader("Pragma", "no-cache");
+    res.setHeader("Expires", "0");
+
+    return res.status(200).send(text);
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      error: "Failed to update row",
+      details: error.message
+    });
+  }
+}
